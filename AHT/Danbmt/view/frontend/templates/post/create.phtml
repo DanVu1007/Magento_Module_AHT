@@ -1,0 +1,20 @@
+<?php
+
+/** @var \AHT\Test\Block\Template $block */
+$post = $block->prepareEdit();
+?>
+<div class="" style="margin-bottom: 30px;">
+    <a href="<?= $block->getBaseUrl() ?>danbmt/post/index" class="action secondary">Show data</a>
+</div>
+<div class="template">
+    <h1><?= $post != null ? 'Edit' : 'Create' ?></h1>
+
+    <form class="form" class="custom-inputs" action="<?= $block->getUrl('danbmt/post/save'); ?>" method="post">
+        <input name="name" type="text" class="input-text" placeholder="name...." value="<?= $post != null ? $post->getName() : '' ?>">
+        <input name="content" type="text" class="input-text" placeholder="content...." value="<?= $post != null ? $post->getContent() : '' ?>">
+    <?php if($post != null) : ?>
+        <input type="hidden" value="<?= $post != null ? $post->getDan_id() : '' ?>" name="dan_id">
+    <?php endif;?>
+        <button type="submit">Submit</button>
+    </form>
+</div>

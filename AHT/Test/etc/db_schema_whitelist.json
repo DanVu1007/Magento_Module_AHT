@@ -1,0 +1,12 @@
+{
+    "aht_test_test": {
+        "column": {
+            "test_id": true,
+            "name": true,
+            "des": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

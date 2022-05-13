@@ -1,0 +1,35 @@
+<?php
+/** @var \AHT\Danbmt\Block\Template $block */
+?>
+<h1>Show</h1>
+<?php
+    $list_data = $block->getDanData();
+    // echo '<pre>';
+    // print_r($list_data->getData());
+    // echo '</pre>';
+?>
+<div class="" style="margin-bottom: 30px;">
+    <a href="<?= $block->getBaseUrl() ?>danbmt/post/create" class="action secondary">Add more data</a>
+</div>
+
+<table >
+    <thead>
+        <tr style="border: 1px solid black;background-color:beige">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Des</th>
+            <th colspan="2">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($list_data as $key => $test) : ?>
+            <tr style="border: 1px solid black; ">
+                <td><?= $test->getDan_id() ?></td>
+                <td><?= $test->getName() ?></td>
+                <td><?= $test->getContent() ?></td>
+                <td><a href="<?= $block->getBaseUrl() ?>danbmt/post/edit/id/<?= $test->getDan_id() ?>" class="action">edit</a></td>
+                <td><a href="<?= $block->getBaseUrl() ?>danbmt/post/delete/id/<?= $test->getDan_id() ?>" class="action">delete</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
