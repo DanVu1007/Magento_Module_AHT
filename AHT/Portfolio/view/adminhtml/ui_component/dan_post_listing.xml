@@ -12,7 +12,7 @@
 		</deps>
 		<buttons>
 			<button name="add">
-				<url path="*/*/new"/>
+				<url path="*/*/newaction"/>
 				<class>primary</class>
 				<label translate="true">Add new Content</label>
 			</button>

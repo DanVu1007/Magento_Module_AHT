@@ -1,7 +1,7 @@
 <?php
-namespace AHT\Portfolio\Controller\adminhtml\Post;
+namespace AHT\Portfolio\Controller\Adminhtml\Post;
 
-class index extends \Magento\Framework\App\Action\Action
+class Index extends \Magento\Framework\App\Action\Action
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory
