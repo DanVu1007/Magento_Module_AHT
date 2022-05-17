@@ -33,15 +33,51 @@
 			</settings>
 		</dataProvider>
 	</dataSource>
-	<listingToolbar name="listing_top">
-		<settings>
-			<sticky>true</sticky>
-		</settings>
-		<bookmark name="bookmarks"/>
-		<columnsControls name="columns_controls"/>
-		<filters name="listing_filters"/>
-		<paging name="listing_paging"/>
-	</listingToolbar>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters">
+            <settings>
+                <templates>
+                    <filters>
+                        <select>
+                            <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                            <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                        </select>
+                    </filters>
+                </templates>
+            </settings>
+            <filterSelect name="store_id" provider="${ $.parentName }">
+                <settings>
+                    <captionValue>0</captionValue>
+                    <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    <label translate="true">Store View</label>
+                    <dataScope>store_id</dataScope>
+                    <imports>
+                        <link name="visible">componentType = column, index = ${ $.index }:visible</link>
+                    </imports>
+                </settings>
+            </filterSelect>
+        </filters>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="dan/post/massdelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
 	<columns name="aht_portfolio_post_columns">
 		<settings>
 			<editorConfig>
@@ -90,13 +126,15 @@
 			</settings>
 		</column> -->
 
-		<!-- <actionsColumn name="actions" class="AHT\Portfolio\Ui\Component\Listing\Column\PostActions">
+		<actionsColumn name="actions" class="AHT\Portfolio\Ui\Component\Listing\Column\PostActions">
 			<settings>
 				<indexField>danPort_id</indexField>
 				<resizeEnabled>false</resizeEnabled>
 				<resizeDefaultWidth>107</resizeDefaultWidth>
 			</settings>
-		</actionsColumn> -->
+		</actionsColumn>
+
+
 		<column name="name">
 			<settings>
 				<filter>text</filter>

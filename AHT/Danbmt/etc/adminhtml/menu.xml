@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="AHT_Danbmt::menu_id" title="Dan bmt" module="AHT_Danbmt" sortOrder="10" action="frontname/controller/action" resource="AHT_Danbmt::menu_id"/>
-        <add id="AHT_Danbmt::menu_id_index" title="Danbmt 1" module="AHT_Danbmt"  parent="AHT_Danbmt::menu_id" sortOrder="15" action="frontname/controller/action" resource="AHT_Danbmt::menu_id"/>
-        <add id="AHT_Danbmt::menu_id_category" title="Danbmt 2" module="AHT_Danbmt"  parent="AHT_Danbmt::menu_id" sortOrder="15" action="frontname/controller/action" resource="AHT_Danbmt::menu_id"/>
+        <add id="AHT_Danbmt::menu_id_index" title="Danbmt 1" module="AHT_Danbmt"  parent="AHT_Danbmt::menu_id" sortOrder="15" action="danbmt-module/post/index" resource="AHT_Danbmt::menu_id"/>
+        <add id="AHT_Danbmt::menu_id_category" title="Danbmt 2" module="AHT_Danbmt"  parent="AHT_Danbmt::menu_id" sortOrder="15" action="danbmt-module/post/create" resource="AHT_Danbmt::menu_id"/>
     </menu>
 </config>
