@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\Danbmt\Controller\Post;
 
 class Delete extends \Magento\Framework\App\Action\Action
@@ -32,14 +33,13 @@ class Delete extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
-       \Magento\Framework\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory,
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $pageFactory,
         \Magento\Framework\Registry $registry,
         \AHT\Danbmt\Model\PostRepository $postRepository,
         \Magento\Framework\App\Cache\TypeListInterface $typeList,
         \Magento\Framework\App\Cache\Frontend\Pool $pool
-    )
-    {
+    ) {
         $this->_pageFactory = $pageFactory;
         $this->registry = $registry;
         $this->postRepository = $postRepository;
@@ -55,15 +55,11 @@ class Delete extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $id = $this->_request->getParam('id');
-        $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
-        if ($this->postRepository->deleteById($id)) {
-            $redirect->setUrl('http://127.0.0.1/magentov2/danbmt/post/');
-        } else {
-            $redirect->setUrl('http://127.0.0.1/magentov2/danbmt/post/create');
-        }
+        $post = $this->postRepository->get($id);
 
+        $this->postRepository->delete($post);
         $this->flushCache();
-        return $redirect;
+        return $this->resultRedirectFactory->create()->setPath('danbmt/post');
     }
 
     public function flushCache()

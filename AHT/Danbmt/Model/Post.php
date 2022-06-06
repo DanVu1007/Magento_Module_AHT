@@ -58,22 +58,4 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \AHT\Danbmt
         
         return $postDataObject;
     }
-
-    public function getPostId(){
-
-    }
-    public function setPostId($postId){
-
-    }
-    public function getDan(){
-
-    }
-    public function setDan($dan){
-
-    }
-    public function getExtensionAttributes(){
-
-    }
-
-
 }

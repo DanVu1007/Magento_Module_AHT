@@ -128,7 +128,7 @@ class PostRepository implements PostRepositoryInterface
     {
         try {
             $postModel = $this->postFactory->create();
-            $this->resource->load($postModel, $post->getPostId());
+            $this->resource->load($postModel, $post->getDanId());
             $this->resource->delete($postModel);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
@@ -144,8 +144,6 @@ class PostRepository implements PostRepositoryInterface
      */
     public function deleteById($postId)
     {
-        
-
         return $this->delete($this->get($postId));
     }
 }

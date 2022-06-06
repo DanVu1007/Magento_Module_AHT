@@ -70,13 +70,12 @@ class Save extends \Magento\Framework\App\Action\Action implements \AHT\Danbmt\A
         $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
 
         if ($this->danPostRepository->save($post)) {
-            $redirect->setUrl('http://127.0.0.1/magentov2/danbmt/post/');
+            $this->flushCache();
+            return $this->resultRedirectFactory->create()->setPath('danbmt/post');
         } else {
-            $redirect->setUrl('http://127.0.0.1/magentov2/danbmt/post/create');
+            $this->flushCache();
+            return $this->resultRedirectFactory->create()->setPath('danbmt/post/edit');
         }
-
-        $this->flushCache();
-        return $redirect;
     }
 
 
