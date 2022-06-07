@@ -1,0 +1,31 @@
+<?php
+/** @var \AHT\Actionuic\Block\Template $block */
+$getCollectionUic = $block->getDataUIC();
+?>
+<style>
+    tr,td,th
+    {
+        border: 1px solid gray;
+    }
+    .unblock{
+        display: none;
+    }
+</style>
+<table>
+    <tr>
+        <th><?= (__('Id')) ?></th>
+        <th><?= (__('Name')) ?></th>
+        <th><?= (__('Short description')) ?></th>
+        <th><?= (__('Description')) ?></th>
+        <th><?= (__('Url key')) ?></th>
+    </tr>
+    <?php foreach ($getCollectionUic as  $itemUic) : ?>
+        <tr class="<?php echo ($itemUic->getStatus()==0) ? 'unblock' : '' ?>">
+            <td><?php echo $itemUic->getUic_id(); ?></td>
+            <td><?php echo $itemUic->getName(); ?></td>
+            <td><?php echo $itemUic->getShort_description(); ?></td>
+            <td><?php echo $itemUic->getDescription(); ?></td>
+            <td><?php echo $itemUic->getUrl_key(); ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="AHT\Actionuic\Model\ResourceModel\Actionuic\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">action_uic</argument>
+            <argument name="resourceModel" xsi:type="string">AHT\Actionuic\Model\ResourceModel\Actionuic\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="actionuic_actionuic_listing_data_source" xsi:type="string">AHT\Actionuic\Model\ResourceModel\Actionuic\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Customer\Controller\Account\Login">
+        <plugin name="aht_actionuic_plugina" type="AHT\Actionuic\Plugin\Block\PluginBlockA" sortOrder="10" />
+    </type>
+</config>

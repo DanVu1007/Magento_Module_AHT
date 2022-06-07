@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="AHT\Blog\Api\BlogcategoryRepositoryInterface" type="AHT\Blog\Model\BlogcategoryRepository"/>
+	<preference for="AHT\Blog\Api\Data\BlogcategoryInterface" type="AHT\Blog\Model\Blogcategory"/>
+	<preference for="AHT\Blog\Api\Data\BlogcategorySearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="AHT\Blog\Model\ResourceModel\Blogcategory\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">blog_category</argument>
+			<argument name="resourceModel" xsi:type="string">AHT\Blog\Model\ResourceModel\Blogcategory\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="blog_blogcategory_listing_data_source" xsi:type="string">AHT\Blog\Model\ResourceModel\Blogcategory\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>
