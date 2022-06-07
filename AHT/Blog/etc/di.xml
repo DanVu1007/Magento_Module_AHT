@@ -16,4 +16,22 @@
 			</argument>
 		</arguments>
 	</type>
+
+
+	<preference for="AHT\Blog\Api\BlogRepositoryInterface" type="AHT\Blog\Model\BlogRepository"/>
+	<preference for="AHT\Blog\Api\Data\BlogInterface" type="AHT\Blog\Model\Blog"/>
+	<preference for="AHT\Blog\Api\Data\BlogSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="AHT\Blog\Model\ResourceModel\Blog\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">blog</argument>
+			<argument name="resourceModel" xsi:type="string">AHT\Blog\Model\ResourceModel\Blog\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="blog_blog_listing_data_source" xsi:type="string">AHT\Blog\Model\ResourceModel\Blog\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
 </config>
