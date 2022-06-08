@@ -84,6 +84,39 @@
                 </validation>
             </settings>
         </field>
+
+        <!-- CATEGORY -->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!-- CATEGORY -->
+        
+
         <!-- url key -->
         <field name="url_key" formElement="input" sortOrder="20">
             <argument name="data" xsi:type="array">
@@ -96,12 +129,13 @@
                 <label translate="true">URL key</label>
                 <dataScope>url_key</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="string">false</rule>
+                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
                 </validation>
             </settings>
         </field>
+        
         <!-- image -->
-        <field name="image" formElement="input" sortOrder="10">
+        <field name="image" formElement="input" sortOrder="30">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">actionuic</item>
@@ -112,12 +146,12 @@
                 <label translate="true">image</label>
                 <dataScope>image</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="string">false</rule>
+                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
                 </validation>
             </settings>
         </field>
         <!-- tag -->
-        <field name="url_key" formElement="input" sortOrder="20">
+        <field name="tag" formElement="input" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Actionuic</item>
@@ -128,12 +162,12 @@
                 <label translate="true">tag</label>
                 <dataScope>tag</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="string">false</rule>
+                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
                 </validation>
             </settings>
         </field>
         <!-- author -->
-        <field name="url_key" formElement="input" sortOrder="20">
+        <field name="author" formElement="input" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Actionuic</item>
@@ -144,7 +178,7 @@
                 <label translate="true">author</label>
                 <dataScope>author</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="string">false</rule>
+                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
                 </validation>
             </settings>
         </field>
@@ -168,7 +202,7 @@
                 <label translate="true">Short Description</label>
                 <dataScope>short_description</dataScope>
                 <validation>
-                    <rule name="required-entry" xsi:type="string">false</rule>
+                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
                 </validation>
             </settings>
         </field>

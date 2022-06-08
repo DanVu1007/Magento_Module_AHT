@@ -2,13 +2,13 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">blog_blog_listing.blog_blog_listing_data_source</item>
+			<item name="provider" xsi:type="string">blog_blog_listing.blogvv_blog_listing_data_source</item>
 		</item>
 	</argument>
 	<settings>
 		<spinner>aht_blog_blog_columns</spinner>
 		<deps>
-			<dep>blog_blog_listing.blog_blog_listing_data_source</dep>
+			<dep>blog_blog_listing.blogvv_blog_listing_data_source</dep>
 		</deps>
 		<buttons>
 			<button name="add">
@@ -18,7 +18,7 @@
 			</button>
 		</buttons>
 	</settings>
-	<dataSource name="blog_blog_listing_data_source" component="Magento_Ui/js/grid/provider">
+	<dataSource name="blogvv_blog_listing_data_source" component="Magento_Ui/js/grid/provider">
 		<settings>
 			<storageConfig>
 				<param name="indexField" xsi:type="string">blog_id</param>
@@ -26,7 +26,7 @@
 			<updateUrl path="mui/index/render"/>
 		</settings>
 		<aclResource>AHT_Blog::blog</aclResource>
-		<dataProvider name="blog_blog_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+		<dataProvider name="blogvv_blog_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
 			<settings>
 				<requestFieldName>blog_id</requestFieldName>
 				<primaryFieldName>blog_id</primaryFieldName>

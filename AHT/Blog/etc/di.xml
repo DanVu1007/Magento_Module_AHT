@@ -30,7 +30,7 @@
 	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
 		<arguments>
 			<argument name="collections" xsi:type="array">
-				<item name="blog_blog_listing_data_source" xsi:type="string">AHT\Blog\Model\ResourceModel\Blog\Grid\Collection</item>
+				<item name="blogvv_blog_listing_data_source" xsi:type="string">AHT\Blog\Model\ResourceModel\Blog\Grid\Collection</item>
 			</argument>
 		</arguments>
 	</type>

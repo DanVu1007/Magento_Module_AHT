@@ -6,13 +6,13 @@ class Selectcategory implements \Magento\Framework\Option\ArrayInterface
     /**
      * @param \AHT\Blog\Model\ResourceModel\Blogcategory\CollectionFactory
      */
-    private $collection;
+    private $collectionFactory;
 
     public function __construct(
         \AHT\Blog\Model\ResourceModel\Blogcategory\CollectionFactory $collection
     )
     {
-        $this->collection = $collection;
+        $this->collectionFactory = $collection;
         
     }
     public function toOptionArray()
@@ -24,6 +24,7 @@ class Selectcategory implements \Magento\Framework\Option\ArrayInterface
                 'label' => __('--Root Category--')
             ]
         ];
+       
 
         $arrayValue = [];
         foreach ($values as $key => $value) {
