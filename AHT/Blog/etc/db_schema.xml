@@ -8,6 +8,7 @@
         <column name="short_description" xsi:type="varchar" nullable="true" default="Short description about this blog" comment=""/>
         <column name="description" xsi:type="varchar" nullable="true" default="Description about this blog" comment=""/>
         <column name="tag" xsi:type="varchar" nullable="true" default="tag 0" comment=""/>
+        <column name="category_ids" xsi:type="varchar" nullable="true" comment=""/>
         <column name="url" xsi:type="varchar" nullable="false" default="AHT/Blog/id/0" comment=""/>
         <column name="author" xsi:type="varchar" nullable="true" default="Author's name" comment=""/>
         <column name="public_day" xsi:type="timestamp" nullable="true" default="CURRENT_TIMESTAMP" comment=""/>
@@ -39,12 +40,13 @@
             <column name="blog_id"/>
         </index>  -->
     </table>
-    <table name="blog_connect" resource="default" engine="innodb" comment="Blog">
-        <column name="blog_id" xsi:type="int" padding="11" unsigned="true" nullable="false" identity="true" comment=""/>
-        <column name="blog_category_id" xsi:type="int" padding="11" unsigned="true" nullable="false" comment=""/>
-        <constraint xsi:type="unique" referenceId="REFERENCE_ID">
-            <column name="blog_id"/>
-            <column name="blog_category_id"/>
+    <table name="blog_category_connect" resource="default" engine="innodb" comment="Blog">
+        <column name="blog_category_connect_id" xsi:type="int" padding="11" unsigned="true" nullable="false" identity="true" comment=""/>
+        <column name="blog_id" xsi:type="int" padding="11" unsigned="true" comment=""/>
+        <column name="blog_category_id" xsi:type="int" padding="11" unsigned="true" comment=""/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="blog_category_connect_id"/>
         </constraint>
     </table>
 </schema>

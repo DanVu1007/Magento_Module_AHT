@@ -1,0 +1,17 @@
+<?php
+
+/** @var \AHT\Blog\Block\Frontend\Blog\Index $block */
+$dataBlogCollection = $block->getCollectionBlog();
+?>
+<ul>
+    <?php foreach ($dataBlogCollection as  $blog) : ?>
+        <li>
+            <a href="cate/name/id/<?php echo $blog->getBlog_category_id(); ?>">
+                <?php echo $blog->getName(); ?>
+            </a>
+            <p>
+                <?php echo $blog->getPublic_day() ;?>
+            </p>
+        </li>
+    <?php endforeach; ?>
+</ul>

@@ -1,0 +1,14 @@
+<?php
+
+/** @var \AHT\Blog\Block\Template $block */
+$dataBlogCollection = $block->getCollectionCategory();
+?>
+<ul>
+    <?php foreach ($dataBlogCollection as  $itemUic) : ?>
+        <li>
+            <a href="cate/name/id/<?php echo $itemUic->getBlog_category_id(); ?>">
+                <?php echo $itemUic->getName(); ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
