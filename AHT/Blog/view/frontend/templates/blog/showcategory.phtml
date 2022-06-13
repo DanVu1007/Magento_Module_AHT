@@ -3,10 +3,11 @@
 /** @var \AHT\Blog\Block\Template $block */
 $dataBlogCollection = $block->getCollectionCategory();
 ?>
+<h3>All categories</h3>
 <ul>
     <?php foreach ($dataBlogCollection as  $itemUic) : ?>
         <li>
-            <a href="cate/name/id/<?php echo $itemUic->getBlog_category_id(); ?>">
+            <a href="<?php echo $block->getUrl(); ?>blog/blog/index/cateid/<?php echo $itemUic->getBlog_category_id(); ?>">
                 <?php echo $itemUic->getName(); ?>
             </a>
         </li>

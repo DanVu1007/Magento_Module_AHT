@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\Blog\Model\ResourceModel\Blog;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
@@ -15,5 +16,16 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     protected function _construct()
     {
         $this->_init('AHT\Blog\Model\Blog', 'AHT\Blog\Model\ResourceModel\Blog');
+    }
+    
+    public function joinCollection($table, $id,$isRoot=true)
+    {
+        $roottable = ($isRoot == true) ? "main_table" : $table;
+        $this->join(
+            [ $table => $this->getTable($table)],
+            $roottable.".".$id."= ".$table.".".$id,
+            ''
+        );
+        return $this;
     }
 }

@@ -3,6 +3,8 @@ namespace AHT\Blog\Model;
 
 class Blog extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
 {
+    const STATUS_ENABLE = 1;
+    const STATUS_DISABLE = 0;
     const CACHE_TAG = 'aht_blog_blog';
 
     /**

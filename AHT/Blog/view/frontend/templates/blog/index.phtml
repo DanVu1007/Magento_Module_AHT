@@ -3,15 +3,20 @@
 /** @var \AHT\Blog\Block\Frontend\Blog\Index $block */
 $dataBlogCollection = $block->getCollectionBlog();
 ?>
+<h3>All blogs</h3>
 <ul>
     <?php foreach ($dataBlogCollection as  $blog) : ?>
         <li>
-            <a href="cate/name/id/<?php echo $blog->getBlog_category_id(); ?>">
+            <a href="<?php echo $blog->getUrl();?>index/cate/id/<?php echo $blog->getBlog_category_id(); ?>">
+                <?php echo $blog->getBlog_id(); ?> -
                 <?php echo $blog->getName(); ?>
             </a>
-            <p>
-                <?php echo $blog->getPublic_day() ;?>
-            </p>
         </li>
     <?php endforeach; ?>
 </ul>
+
+<?php if ($block->getPagerHtml()) :;?>
+    <div class="order-products-toolbar toolbar bottom" ><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
+
+
