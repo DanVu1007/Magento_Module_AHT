@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\Blog\Controller\Blog;
 
 class Index extends \Magento\Framework\App\Action\Action
@@ -9,21 +10,13 @@ class Index extends \Magento\Framework\App\Action\Action
     protected $_pageFactory;
 
     /**
-     * @param \Magento\Framework\Registry
-     */
-    private $registry;
-
-    /**
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
-       \Magento\Framework\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory,
-        \Magento\Framework\Registry $registry
-    )
-    {
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $pageFactory
+    ) {
         $this->_pageFactory = $pageFactory;
-        $this->registry = $registry;
         return parent::__construct($context);
     }
     /**
@@ -34,17 +27,27 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $pageResult = $this->_pageFactory->create();
-        $pageResult->getConfig()->getTitle()->set(__('Show all blogs'));
-        $param = $this->getRequest()->getParams();
-        if(!empty($param['cateid'])){
-            $pageResult->getConfig()->getTitle()->set(__('Show all blogs by category'));
-            $this->registry->register('cateid',$param['cateid']);
+        $content = 'Show all blogs';
+
+        $param          = $this->getRequest()->getParams();
+        $cateId         = $this->getRequest()->getParam('cateid');
+        $nameResearch   = $this->getRequest()->getParam('namesearch');
+
+        if ($cateId != '') {
+            $content  = "Show all blogs by category id: " . $cateId;
         }
-        if(!empty($param['namesearch'])){
-            $content = 'Show all blogs by name like: '.$param['namesearch'];
-            $pageResult->getConfig()->getTitle()->set(__($content));
-            $this->registry->register('namesearch',$param['namesearch']);
+
+        if ($nameResearch != '') {
+            $content        = 'Show all blogs by name like: ' . $nameResearch;
+            if ($cateId != '') {
+                $content    = $content . ", and categoryid is: " . $param['cateid'];
+            }
         }
+
+        $pageResult->getConfig()->getTitle()->set(__($content));
+        
         return $pageResult;
     }
+
+    
 }

@@ -1,14 +1,16 @@
 <?php
-
 /** @var \AHT\Blog\Block\Frontend\Blog\Index $block */
 $dataBlogCollection = $block->getCollectionBlog();
 ?>
 <h3>All blogs</h3>
 <ul>
     <?php foreach ($dataBlogCollection as  $blog) : ?>
+        <?php 
+            echo $urlRequest = "blog/blog/".$blog->getUrl_key();
+            $urlTarget  = "blog/blog/detail/blog_id/".$blog->getBlog_id();
+        ?>
         <li>
-            <a href="<?php echo $blog->getUrl();?>index/cate/id/<?php echo $blog->getBlog_category_id(); ?>">
-                <?php echo $blog->getBlog_id(); ?> -
+            <a href="<?php echo $block->getBaseUrl().$urlTarget; ?>">
                 <?php echo $blog->getName(); ?>
             </a>
         </li>

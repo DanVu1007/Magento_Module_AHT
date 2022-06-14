@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="sidebar.main">
+            <block class="AHT\Blog\Block\Frontend\Category\Index" name="blogcate_show_name2" template="AHT_Blog::blog/showcategory.phtml" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="AHT\Blog\Block\Frontend\Blog\Index" name="blog_show_detail" cacheable="false"  template="AHT_Blog::blog/detail.phtml" before="-" />
+        </referenceContainer>
+    </body>
+</page>

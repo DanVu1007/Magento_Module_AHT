@@ -1,7 +1,7 @@
 <?php
 namespace AHT\Blog\Controller\Blog;
 
-class Cate extends \Magento\Framework\App\Action\Action
+class Detail extends \Magento\Framework\App\Action\Action
 {
     /**
      * @var \Magento\Framework\View\Result\PageFactory
@@ -29,5 +29,4 @@ class Cate extends \Magento\Framework\App\Action\Action
     {
         return $this->_pageFactory->create();
     }
-    
 }
