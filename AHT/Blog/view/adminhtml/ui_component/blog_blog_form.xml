@@ -217,6 +217,9 @@
                 <dataType>text</dataType>
                 <label translate="true">Public day</label>
                 <dataScope>public_day</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="string">false</rule>
+                </validation>
             </settings>
         </field>
     </fieldset>

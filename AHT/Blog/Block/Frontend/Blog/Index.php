@@ -132,6 +132,7 @@ class Index extends Template
     public function getBlogByID()
     {
         $id = $this->getRequest()->getParam('blog_id');
+
         if ($id != null) {
             $collection = $this->collectionFactory->create()
                 ->addFieldToFilter('blog_id', $id)
@@ -151,4 +152,10 @@ class Index extends Template
         $redirect->setUrl($url);
         return $redirect;
     }
+
+    public function getBlogUrl($blog){
+        return $this->getUrl('blog/'.$blog->getUrl().'.html');
+    }
+
+    
 }

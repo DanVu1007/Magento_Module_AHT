@@ -7,7 +7,7 @@ $dataBlogCollection = $block->getCollectionCategory();
 <ul>
     <?php foreach ($dataBlogCollection as  $itemUic) : ?>
         <li>
-            <a href="<?php echo $block->getUrl(); ?>blog/blog/index/cateid/<?php echo $itemUic->getBlog_category_id(); ?>">
+            <a href="<?php echo $block->getUrl(); ?>category/<?php echo $itemUic->getName().'.html'; ?>">
                 <?php echo $itemUic->getName(); ?>
             </a>
         </li>

@@ -19,6 +19,8 @@
         </constraint>
         <constraint xsi:type="unique" referenceId="REFERENCE_ID">
             <column name="blog_id"/>
+            <column name="url"/>
+
         </constraint>
         <!--  <index referenceId="INDEX_REFERENCE_ID" indexType="btree">
             <column name="blog_id"/>
@@ -35,6 +37,7 @@
         </constraint>
         <constraint xsi:type="unique" referenceId="REFERENCE_ID">
             <column name="blog_category_id"/>
+            <column name="name"/>
         </constraint>
         <!--  <index referenceId="INDEX_REFERENCE_ID" indexType="btree">
             <column name="blog_id"/>

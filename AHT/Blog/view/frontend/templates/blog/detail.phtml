@@ -1,6 +1,6 @@
 <?php
-/** @var \AHT\Blog\Block\Frontend\Blog\Index $block */
-    $blog = $block->getBlogByID()[0];
+/** @var AHT\Blog\Block\Frontend\Blog\Detail $block */
+    $blog = $block->getBlogByID();
     $image = ($blog['image'] != '') ? "<img class='img' src=".$blog['image']." alt=''>" : "Không có hình ảnh";
 ?>
 <style>

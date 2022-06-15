@@ -3,4 +3,10 @@
     <event name="blog_save_after">
         <observer name="blog_aftersave_connect" instance="AHT\Blog\Observer\Saveconnect" />
     </event>
+    <event name="blog_save_before">
+        <observer name="blog_before_save" instance="AHT\Blog\Observer\BeforeSaveBlog" />
+    </event>
+    <event name="blog_category_save_before">
+        <observer name="blog_category_before_save" instance="AHT\Blog\Observer\BeforeSaveCate" />
+    </event>
 </config>

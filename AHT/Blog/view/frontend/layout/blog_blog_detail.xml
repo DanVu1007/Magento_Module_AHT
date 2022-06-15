@@ -5,7 +5,7 @@
             <block class="AHT\Blog\Block\Frontend\Category\Index" name="blogcate_show_name2" template="AHT_Blog::blog/showcategory.phtml" />
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="AHT\Blog\Block\Frontend\Blog\Index" name="blog_show_detail" cacheable="false"  template="AHT_Blog::blog/detail.phtml" before="-" />
+            <block class="AHT\Blog\Block\Frontend\Blog\Detail" name="blog_show_detail" cacheable="false"  template="AHT_Blog::blog/detail.phtml" before="-" />
         </referenceContainer>
     </body>
 </page>
