@@ -149,12 +149,12 @@
                 <dataType>text</dataType>
                 <label translate="true">URL Key</label>
                 <dataScope>url</dataScope>
-                 <validation>
+                <validation>
                     <rule name="required-entry" xsi:type="string">false</rule>
                 </validation>
             </settings>
         </field>
-        
+
         <!-- image -->
         <field name="image" formElement="input" sortOrder="30">
             <argument name="data" xsi:type="array">
@@ -222,32 +222,36 @@
                 </validation>
             </settings>
         </field>
-    </fieldset>
 
-    <fieldset name="content" sortOrder="10">
-        <settings>
-            <collapsible>true</collapsible>
-            <label translate="true">Content</label>
-        </settings>
+
+
 
         <!-- short_description -->
-        <field name="short_description" formElement="input" sortOrder="30">
+        <field name="short_description" formElement="wysiwyg" sortOrder="90">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Actionuic</item>
+                    <item name="source" xsi:type="string">short_description</item>
                 </item>
             </argument>
             <settings>
-                <dataType>text</dataType>
-                <label translate="true">Short Description</label>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <label translate="true">short_description</label>
                 <dataScope>short_description</dataScope>
-                <validation>
-                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
-                </validation>
             </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
         </field>
+
+
         <!-- description -->
-        <field name="description" formElement="wysiwyg" sortOrder="40">
+        <field name="description" formElement="wysiwyg" sortOrder="90">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">description</item>
@@ -257,7 +261,7 @@
                 <additionalClasses>
                     <class name="admin__field-wide">true</class>
                 </additionalClasses>
-                <label/>
+                <label translate="true">description</label>
                 <dataScope>description</dataScope>
             </settings>
             <formElements>
@@ -270,4 +274,5 @@
         </field>
 
     </fieldset>
+
 </form>

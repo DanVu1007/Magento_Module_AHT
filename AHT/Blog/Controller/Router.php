@@ -11,6 +11,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\RouterInterface;
 
+
 /**
  * Class Router
  */
@@ -36,15 +37,11 @@ class Router implements RouterInterface
      */
     private $blogcategoryFactory;
 
-    /**
-     * @var \Magento\Framework\Controller\ResultFactory
-     */
-    private $resultFactory;
 
     /**
-     * @var \Magento\Framework\App\Action\Context
+     * @var \Magento\Framework\Controller\Result\RedirectFactory
      */
-    private $actionContext;
+    private $redirectFactory;
 
     /**
      * Router constructor.
@@ -57,17 +54,14 @@ class Router implements RouterInterface
         ResponseInterface $response,
         \AHT\Blog\Model\BlogFactory $blogFactory,
         \AHT\Blog\Model\BlogcategoryFactory $blogcategoryFactory,
-        \Magento\Framework\Controller\ResultFactory $resultFactory,
-        \Magento\Framework\App\Action\Context $actionContext
+        \Magento\Backend\Model\View\Result\RedirectFactory $redirectFactory
     ) {
         $this->actionFactory = $actionFactory;
         $this->response = $response;
         $this->blogFactory = $blogFactory;
         $this->blogcategoryFactory = $blogcategoryFactory;
-        $this->resultFactory = $resultFactory;
-        $this->actionContext = $actionContext;
+        $this->redirectFactory = $redirectFactory;
     }
-
     /**
      * @param RequestInterface $request
      * @return ActionInterface|null
@@ -82,8 +76,7 @@ class Router implements RouterInterface
         if (!empty($linkGot[1])) {
             $identifier = explode('.', $linkGot[1])[0];
         } else {
-            echo 'chuyen trang';
-            die;
+            $this->redirectToUrl('blog/blog/');
         }
 
         if ($linkGot[0] == 'blog') {
@@ -105,8 +98,7 @@ class Router implements RouterInterface
             ]);
             return $this->actionFactory->create(Forward::class, ['request' => $request]);
         } else {
-            echo 'chuyen trang';
-            die;
+            $this->redirectToUrl('blog/blog/');
         }
     }
 
@@ -122,9 +114,9 @@ class Router implements RouterInterface
 
     public function redirectToUrl($url)
     {
-        $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
-        $redirect->setUrl($url);
-
-        return $redirect;
+        $resultRedirect = $this->redirectFactory->create();
+        $resultRedirect->setPath($url);
+        // echo "chuyen trang";die;
+        return $resultRedirect;
     }
 }
