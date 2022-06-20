@@ -24,8 +24,10 @@ class BeforeSaveBlog implements \Magento\Framework\Event\ObserverInterface
         $arrBlogUrl = $this->collectionFactory->create()->getData();
 
         foreach ($arrBlogUrl as $key => $value) {
-            if($value['url'] == $url){
-                throw new \Magento\Framework\Exception\CouldNotDeleteException(__("The url is exits!"));
+            if(empty($value['blog_id'])){
+                if($value['url'] == $url){
+                    throw new \Magento\Framework\Exception\CouldNotDeleteException(__("The url is exits!"));
+                }
             }
         }
 

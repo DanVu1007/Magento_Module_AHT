@@ -9,4 +9,8 @@
     <event name="blog_category_save_before">
         <observer name="blog_category_before_save" instance="AHT\Blog\Observer\BeforeSaveCate" />
     </event>
+
+
+
+
 </config>

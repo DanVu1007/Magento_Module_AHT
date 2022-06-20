@@ -156,20 +156,35 @@
         </field>
 
         <!-- image -->
-        <field name="image" formElement="input" sortOrder="30">
+        <field formElement="imageUploader" name="image" sortOrder="40">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">actionuic</item>
+                    <item name="source" xsi:type="string">post_rules</item>
                 </item>
             </argument>
             <settings>
-                <dataType>text</dataType>
+                <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                <dataType>string</dataType>
                 <label translate="true">Image</label>
-                <dataScope>image</dataScope>
+                <visible>true</visible>
                 <validation>
-                    <!-- <rule name="required-entry" xsi:type="string">false</rule> -->
+                    <!-- <rule name="required-entry" xsi:type="boolean">true</rule> -->
                 </validation>
             </settings>
+            <formElements>
+                <imageUploader>
+                    <settings>
+                        <required>false</required>
+                        <uploaderConfig>
+                            <param xsi:type="url" name="url" path="blog/image/upload"/>
+                        </uploaderConfig>
+                        <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                        <openDialogTitle>Media Gallery</openDialogTitle>
+                        <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                        <maxFileSize>4194304</maxFileSize>
+                    </settings>
+                </imageUploader>
+            </formElements>
         </field>
         <!-- tag -->
         <field name="tag" formElement="input" sortOrder="40">
@@ -205,7 +220,7 @@
         </field>
 
         <!-- DATE -->
-        <field name="public_day" component="Magento_Catalog/js/components/visible-on-option/date" sortOrder="60" formElement="date">
+        <field name="public_day" component="Magento_Catalog/js/components/visible-on-option/date" sortOrder="20" formElement="date">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="valuesForOptions" xsi:type="array">
@@ -227,46 +242,31 @@
 
 
         <!-- short_description -->
-        <field name="short_description" formElement="wysiwyg" sortOrder="90">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">short_description</item>
-                </item>
-            </argument>
-            <settings>
-                <additionalClasses>
-                    <class name="admin__field-wide">true</class>
-                </additionalClasses>
-                <label translate="true">short_description</label>
-                <dataScope>short_description</dataScope>
-            </settings>
-            <formElements>
-                <wysiwyg>
-                    <settings>
-                        <wysiwyg>true</wysiwyg>
-                    </settings>
-                </wysiwyg>
-            </formElements>
-        </field>
 
 
         <!-- description -->
-        <field name="description" formElement="wysiwyg" sortOrder="90">
+
+        <field name="description" template="ui/form/field" sortOrder="90" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">description</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="height" xsi:type="string">100px</item>
+                        <item name="add_variables" xsi:type="boolean">false</item>
+                        <item name="add_widgets" xsi:type="boolean">false</item>
+                        <item name="add_images" xsi:type="boolean">true</item>
+                        <item name="add_directives" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="source" xsi:type="string">category</item>
                 </item>
             </argument>
             <settings>
-                <additionalClasses>
-                    <class name="admin__field-wide">true</class>
-                </additionalClasses>
-                <label translate="true">description</label>
+                <label translate="true">Description</label>
                 <dataScope>description</dataScope>
             </settings>
             <formElements>
-                <wysiwyg>
+                <wysiwyg class="Magento\Catalog\Ui\Component\Category\Form\Element\Wysiwyg">
                     <settings>
+                        <rows>8</rows>
                         <wysiwyg>true</wysiwyg>
                     </settings>
                 </wysiwyg>

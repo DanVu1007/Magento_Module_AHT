@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="AHT_ShopByBrand::brand" title="Brands" module="AHT_ShopByBrand" sortOrder="10" action="brand/brand/index" resource="AHT_ShopByBrand::brand"/>
+    </menu>
+</config>
