@@ -1,0 +1,11 @@
+<?php
+
+/** @var \AHT\ShopByBrand\Block\Frontend\Brand\Index $block */
+$brands = $block->showBrandCollection()->getData();
+?>
+<?php 
+    echo '<pre>';
+    print_r($brands);
+    echo '</pre>';
+    exit();;
+?>

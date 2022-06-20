@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Index" name="showbrand" cacheable="false"  template="AHT_ShopByBrand::brand/index.phtml" />
+            <!-- <block class="AHT\Blog\Block\Frontend\Blog\Detail" name="blog_show_detail" cacheable="false" template="AHT_Blog::blog/detail.phtml" before="-" /> -->
+        </referenceContainer>
+    </body>
+</page>
