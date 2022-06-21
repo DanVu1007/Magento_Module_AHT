@@ -1,0 +1,42 @@
+<?php
+
+/** @var \AHT\ShopByBrand\Block\Frontend\Brand\Index $block */
+$brands = $block->showBrandCollection()->getData();
+?>
+
+<style>
+    ul.list-brand {
+        list-style: none;
+        padding-left: 10px ;
+    }
+    .brand-item-div{
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .brand-item-div img{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 7px;
+    }
+</style>
+<h3>List Brands</h3>
+<ul class="list-brand">
+    <?php foreach ($brands as $key => $value) :; ?>
+        <?php
+        $urlById = $this->getURL('brand/brand/detail')."id/". $value['brand_id'];
+        $image = $value['image'];
+        $name = $value['name'];
+        ?>
+        <li class="brand-item"><a href="<?php echo $urlById; ?>">
+                <div class="brand-item-div">
+                    <img src="<?php echo $image; ?>" alt="">
+                    <span class="name"><?php echo $name; ?></span>
+                </div>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

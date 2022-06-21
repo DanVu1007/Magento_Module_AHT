@@ -2,10 +2,120 @@
 
 /** @var \AHT\ShopByBrand\Block\Frontend\Brand\Index $block */
 $brands = $block->showBrandCollection()->getData();
+$namesearch = $block->getRequest()->getParam('name');
+$sort = $block->getRequest()->getParam('orderby');
+
+$asc = ($sort == 'ASC') ? 'selected' : null;
+$desc = ($sort == 'DESC') ? 'selected' : null;
+
+
 ?>
-<?php 
-    echo '<pre>';
-    print_r($brands);
-    echo '</pre>';
-    exit();;
-?>
+<style>
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .list-brand {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -10px;
+        text-align: center;
+    }
+
+    .list-brand .brand-item {
+        margin: 10px;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+    }
+
+    .list-brand .brand-item:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .list-brand .brand-item a:hover {
+        text-decoration: none;
+    }
+
+    .list-brand .brand-item .image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 10px 0;
+    }
+
+    .list-brand .brand-item .name {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: bold;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .list-brand .brand-item .image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    form{
+        width: 55%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto 40px;
+    }
+
+    form select{
+        width: 20%;
+    }
+    form .search{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    form input.name{
+        width: 65%;
+    }
+</style>
+<h2>Listing Brands</h2>
+<form action="">
+    <div class="search">
+        <input class="name" type="text" name="name" placeholder="Tìm kiếm theo tên" value="<?php echo $namesearch ?>"><br>
+        <input class="action subscribe primary" type="submit" value="Tìm kiếm">
+    </div>
+
+    <select onchange="this.form.submit()" name="orderby" id="cars">
+        <option value="">Sắp xếp theo:</option>
+        <option <?php echo $asc ?> value="ASC">A-Z</option>
+        <option <?php echo $desc ?> value="DESC">Z-A</option>
+    </select>
+</form>
+<a href="<?php echo $this->getURL('brand/brand/index'); ?>"></a>
+<ul class="list-brand">
+    <?php foreach ($brands as $key => $value) :; ?>
+        <?php
+        $urlById = $this->getURL('brand/brand/detail')."id/". $value['brand_id'];
+        $name = $value['name'];
+        $image = $value['image'];
+        ?>
+        <li class="brand-item"><a href="<?php echo $urlById; ?>">
+                <div class="">
+                    <div class="image">
+                        <img src="<?php echo $image; ?>" alt="">
+                    </div>
+                    <p class="name"><?php echo $name; ?></p>
+                </div>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>

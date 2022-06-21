@@ -2,10 +2,10 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="sidebar.main">
-            <block class="AHT\Blog\Block\Frontend\Category\Index" name="blogcate_show_name2" template="AHT_Blog::blog/showcategory.phtml" />
+            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Index" name="listBrandcoi" cacheable="false" template="AHT_ShopByBrand::brand/brandlistcolumn.phtml" />
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Detail" name="detailBrand" template="AHT_ShopByBrand::brand/detail.phtml" />
+            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="detailBrand" cacheable="false" template="AHT_ShopByBrand::brand/detail.phtml" />
         </referenceContainer>
     </body>
 </page>

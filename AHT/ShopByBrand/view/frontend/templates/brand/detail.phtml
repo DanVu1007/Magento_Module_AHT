@@ -1,5 +1,74 @@
 <?php
-/** @var \AHT\ShopByBrand\Block\Template $block */
-?>
 
-<h1>detail</h1>
+/** @var \AHT\ShopByBrand\Block\Frontend\Brand\Showbrand $block */
+$brand = $block->showBrandDetail();
+$name = $brand->getName();
+$image = $brand->getImage();
+$desc = $brand->getDescription();
+
+?>
+<style>
+    .line-through {
+        width: 100%;
+        height: 1px;
+        background-color: black;
+        margin: 40px 0;
+    }
+
+    .detail {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .detail .img {
+        margin: 0 auto 10px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .detail .image img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .detail .name {
+        text-align: center;
+        font-size: 21px;
+        font-weight: bold;
+        color: black;
+        text-transform: capitalize;
+    }
+
+    .detail .description {
+        font-size: 12px;
+        text-align: center;
+        font-style: italic;
+        font-weight: 300;
+        color: #666;
+    }
+</style>
+
+<h3>Detail</h3>
+<!-- Content detail brand -->
+<div class="detail">
+    <div class="img">
+        <img src="<?php echo $image; ?>" alt="">
+    </div>
+
+    <div class="name"><?php echo $name; ?></div>
+    <div class="description"><?php echo $desc; ?></div>
+</div>
+
+<div class="line-through"></div>
+<h3>Product with name brand</h3>
+<!-- Show product here -->
+
+<?php 
+    echo '<pre>';
+    print_r($block->getProductsByBrandId());
+    echo '</pre>';
+    // exit();;
+?>

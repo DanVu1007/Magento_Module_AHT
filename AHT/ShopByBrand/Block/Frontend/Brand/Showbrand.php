@@ -20,19 +20,47 @@ class Showbrand extends \Magento\Framework\View\Element\Template
     private $brandFactory;
 
     /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    private $productcollectionFactory;
+
+    /**
+     * @var \Magento\Catalog\Model\ProductFactory
+     */
+    private $productFactory;
+
+    /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param array $data
      */
     public function __construct(
+
         \Magento\Framework\View\Element\Template\Context $context,
         \AHT\ShopByBrand\Model\BrandFactory $brandFactory,
         ScopeConfigInterface  $scopeConfig,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productcollectionFactory,
+        \Magento\Catalog\Model\ProductFactory $productFactory,
         array $data = []
     ) {
         $this->brandFactory = $brandFactory;
         $this->scopeConfig = $scopeConfig;
+        $this->productcollectionFactory = $productcollectionFactory;
+        $this->productFactory = $productFactory;
         parent::__construct($context, $data);
     }
+
+    public function showBrandDetail()
+    {
+        $id = $this->getRequest()->getParam('id');
+        $brand = $this->brandFactory->create();
+        if($id != null){
+            $brand = $brand->load($id);
+        }else{
+            // redirect
+        }
+        return $brand;
+    }
+
 
     public function showBrandByProductID($product_id)
     {
@@ -51,4 +79,23 @@ class Showbrand extends \Magento\Framework\View\Element\Template
         //Filter get only image
         return $brand;
     }
+
+    public function getProductsByBrandId(){
+        $id = $this->getRequest()->getParam('id');
+        $product = $this->productcollectionFactory->create();
+        if($id != null){
+            $product = $product->addAttributeToFilter('brand', $id)->load()->getAllIds();
+        }
+
+        foreach ($product as $value) {
+            $products = $this->productFactory->create()->getById($value);
+            echo '<pre>';
+            print_r($products);
+            echo '</pre>';
+            // exit();
+        }
+
+        return $product;
+    }
+
 }
