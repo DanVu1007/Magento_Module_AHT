@@ -6,6 +6,8 @@ $name = $brand->getName();
 $image = $brand->getImage();
 $desc = $brand->getDescription();
 
+//Get products
+$getedProducts = $block->getAllProduct();
 ?>
 <style>
     .line-through {
@@ -49,6 +51,29 @@ $desc = $brand->getDescription();
         font-weight: 300;
         color: #666;
     }
+
+    ul.products {
+        list-style: none;
+        display: flex;
+    }
+
+    ul.products li {
+        width: 19%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul.products li .product_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul.products li .product_item .p-name{
+        font-size: 18px;
+        font-weight: bold;
+    }
 </style>
 
 <h3>Detail</h3>
@@ -66,9 +91,26 @@ $desc = $brand->getDescription();
 <h3>Product with name brand</h3>
 <!-- Show product here -->
 
-<?php 
-    echo '<pre>';
-    print_r($block->getProductsByBrandId());
-    echo '</pre>';
-    // exit();;
-?>
+<ul class="products">
+    <?php foreach ($getedProducts as $key => $product) : ?>
+        <li>
+            <a class="product_item" href="<?php echo $block->getBaseUrl().$product[3].'.html'; ?>">
+                <div class="p-image">
+                    <img src="<?php echo $product[1]; ?>" alt="">
+                </div>
+                <div class="p-name"><?php echo $product[0]; ?></div>
+                <div class="p-price"><?php echo "$".round($product[2], 2); ?></div>
+
+            </a>
+            <div class="actions-primary">
+                <form data-role="tocart-form" data-product-sku="bundle babg" action="http://dev.mage241.com/index.php/checkout/cart/add/uenc/aHR0cDovL2Rldi5tYWdlMjQxLmNvbS9pbmRleC5waHAvYnVybmluZy1sb2cuaHRtbA%2C%2C/product/1/" method="post">
+                    <input type="hidden" name="product" value="1">
+                    <input type="hidden" name="uenc" value="aHR0cDovL2Rldi5tYWdlMjQxLmNvbS9pbmRleC5waHAvY2hlY2tvdXQvY2FydC9hZGQvdWVuYy9hSFIwY0RvdkwyUmxkaTV0WVdkbE1qUXhMbU52YlM5cGJtUmxlQzV3YUhBdlluVnlibWx1Wnkxc2IyY3VhSFJ0YkElMkMlMkMvcHJvZHVjdC8xLw,,">
+                    <input name="form_key" type="hidden" value="EbC7nLwg6rnPJXkd"> <button type="submit" title="Add to Cart" class="action tocart primary">
+                        <span>Add to Cart</span>
+                    </button>
+                </form>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
