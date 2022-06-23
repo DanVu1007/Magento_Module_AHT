@@ -118,5 +118,8 @@ class Router implements RouterInterface
         $resultRedirect->setPath($url);
         // echo "chuyen trang";die;
         return $resultRedirect;
+
+        // \Magento\Framework\Controller\Result\RedirectFactory
+            // return $this->resultRedirectFactory->create()->setPath('*/*/');
     }
 }

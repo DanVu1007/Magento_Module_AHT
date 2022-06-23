@@ -5,7 +5,9 @@
             <block class="AHT\ShopByBrand\Block\Frontend\Brand\Index" name="listBrandcoi" cacheable="false" template="AHT_ShopByBrand::brand/brandlistcolumn.phtml" />
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="detailBrand" cacheable="false" template="AHT_ShopByBrand::brand/detail.phtml" />
+            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="detailBrand" cacheable="false" template="AHT_ShopByBrand::brand/brand_detail.phtml" />
+            <!-- <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="detailBrand2" cacheable="false" template="AHT_ShopByBrand::brand/addtocart.phtml" /> -->
+            <!-- <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="detailBrand3" cacheable="false" template="AHT_ShopByBrand::brand/newtest.phtml" /> -->
         </referenceContainer>
     </body>
 </page>

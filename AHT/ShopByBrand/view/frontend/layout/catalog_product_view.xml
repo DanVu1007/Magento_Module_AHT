@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="alert.urls">
-            <block class="AHT\ShopByBrand\Block\Frontend\Brand\Showbrand" name="show_Detail_Brand" cacheable="false" template="AHT_ShopByBrand::brand/showInProductPage.phtml" after="-" />
+            <block class="AHT\ShopByBrand\Block\Frontend\Brand\BrandInProduct" name="show_Detail_Brand" cacheable="false" template="AHT_ShopByBrand::brand/show_product_page.phtml" after="-" />
         </referenceContainer>
     </body>
 </page>
