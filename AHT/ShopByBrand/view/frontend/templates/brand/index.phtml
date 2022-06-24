@@ -7,86 +7,7 @@ $sort = $block->getRequest()->getParam('orderby');
 
 $asc = ($sort == 'ASC') ? 'selected' : null;
 $desc = ($sort == 'DESC') ? 'selected' : null;
-
-
 ?>
-<style>
-    h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    .list-brand {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -10px;
-        text-align: center;
-    }
-
-    .list-brand .brand-item {
-        margin: 10px;
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 10px;
-    }
-
-    .list-brand .brand-item:hover {
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .list-brand .brand-item a:hover {
-        text-decoration: none;
-    }
-
-    .list-brand .brand-item .image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 10px 0;
-    }
-
-    .list-brand .brand-item .name {
-        font-size: 20px;
-        text-transform: uppercase;
-        font-weight: bold;
-
-    }
-
-    a {
-        text-decoration: none;
-    }
-
-    .list-brand .brand-item .image img {
-        width: 100%;
-        height: 100%;
-    }
-
-    form{
-        width: 55%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto 40px;
-    }
-
-    form select{
-        width: 20%;
-    }
-    form .search{
-        flex: 1;
-        display: flex;
-        align-items: center;
-        margin-right: 10px;
-    }
-    form input.name{
-        width: 65%;
-    }
-</style>
 <h2>Listing Brands</h2>
 <form action="">
     <div class="search">
@@ -119,3 +40,30 @@ $desc = ($sort == 'DESC') ? 'selected' : null;
         </li>
     <?php endforeach; ?>
 </ul>
+
+
+
+
+<div class="component-wrapper">
+    <div class="field">
+        <label class="label" for="email"><span data-bind="i18n: 'Tạo người dùng mới'"></span></label>
+        <div class="control">
+            <input name="customername"
+                   id="customername"
+                   type="text"
+                   class="input-text"
+                   data-bind="value: customerData">
+        </div>
+    </div>
+    <div class="primary">
+        <button type="button" class="action action-login secondary" data-bind="click: addNewCustomer">
+            <span data-bind="i18n: 'Lưu'"></span>
+        </button>
+    </div>
+ 
+    <div class="customer-list" style="width: 20%;background: #eee;margin-top: 10px;" data-bind="foreach: customerName">
+        <li data-bind="text: name"></li>
+    </div>
+</div>
+
+
