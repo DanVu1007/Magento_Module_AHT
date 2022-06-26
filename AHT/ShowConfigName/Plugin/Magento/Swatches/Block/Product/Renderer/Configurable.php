@@ -1,16 +1,23 @@
 <?php
 namespace AHT\ShowConfigName\Plugin\Magento\Swatches\Block\Product\Renderer;
 
-class Configurable extends \Magento\Framework\View\Element\Template
+class Configurable
 {
-    /**
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param array $data
-     */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        array $data = []
-    ) {
-        parent::__construct($context, $data);
+    public function afterGetJsonConfig(\Magento\Swatches\Block\Product\Renderer\Configurable $subject, $result) {
+        $jsonResult = json_decode($result, true);
+        foreach ($subject->getAllowProducts() as $simpleProduct) {
+            $id = $simpleProduct->getId();
+            foreach($simpleProduct->getAttributes() as $attribute) {
+                if(($attribute->getIsVisible() && $attribute->getIsVisibleOnFront()) || in_array($attribute->getAttributeCode(), ['sku','description','name']) ) { // <= Here you can put any attribute you want to see dynamic
+                    $code = $attribute->getAttributeCode();
+                    $value = (string)$attribute->getFrontend()->getValue($simpleProduct);
+                    $jsonResult['dynamic'][$code][$id] = [
+                        'value' => $value
+                    ];
+                }
+            }
+        }
+        $result = json_encode($jsonResult);
+        return $result;
     }
 }
