@@ -1,14 +1,14 @@
 <?php
-namespace AHT\ShowConfigName\Plugin\Magento\Swatches\Block\Product\Renderer;
+namespace AHT\ShowConfigName\Plugin\ConfigurableProduct;
 
 class Configurable
 {
-    public function afterGetJsonConfig(\Magento\Swatches\Block\Product\Renderer\Configurable $subject, $result) {
+    public function afterGetJsonConfig(\Magento\ConfigurableProduct\Block\Product\View\Type\Configurable $subject, $result) {
         $jsonResult = json_decode($result, true);
         foreach ($subject->getAllowProducts() as $simpleProduct) {
             $id = $simpleProduct->getId();
             foreach($simpleProduct->getAttributes() as $attribute) {
-                if(($attribute->getIsVisible() && $attribute->getIsVisibleOnFront()) || in_array($attribute->getAttributeCode(), ['sku','description','name']) ) { // <= Here you can put any attribute you want to see dynamic
+                if(($attribute->getIsVisible() && $attribute->getIsVisibleOnFront()) || in_array($attribute->getAttributeCode(), ['sku','name']) ) { // <= Here you can put any attribute you want to see dynamic
                     $code = $attribute->getAttributeCode();
                     $value = (string)$attribute->getFrontend()->getValue($simpleProduct);
                     $jsonResult['dynamic'][$code][$id] = [
