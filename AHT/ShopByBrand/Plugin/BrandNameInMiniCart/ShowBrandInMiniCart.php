@@ -28,8 +28,7 @@ class ShowBrandInMiniCart
         $product = $this->productFactory->create()->load($productId);
         $brandId = $product->getBrand();
         $brand = $this->brandFactory->create()->load($brandId);
-        return array_push($result,['brand'=>$brand->getName()]);
-        
+        return array_merge($result,['brand'=>$brand->getName()]);
     }
 
 
