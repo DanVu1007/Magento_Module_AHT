@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
-        <!-- <add id="AHT_Actionuic::actionuic" title="Action UIC" module="AHT_Actionuic" sortOrder="10" action="actionuic/actionuic/index" resource="AHT_Actionuic::actionuic"/>
-        <add id="AHT_Actionuic::actionuic_index" title="UIC show" module="AHT_Actionuic" sortOrder="15" action="actionuic/actionuic/index" resource="AHT_Actionuic::actionuic" parent="AHT_Actionuic::actionuic"/>
-        <add id="AHT_Actionuic::actionuic_create" title="UIC create" module="AHT_Actionuic" sortOrder="15" action="actionuic/actionuic/newaction" resource="AHT_Actionuic::actionuic" parent="AHT_Actionuic::actionuic"/> -->
-    </menu>
-</config>

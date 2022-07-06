@@ -19,4 +19,8 @@
 	<type name="Magento\Checkout\CustomerData\ItemPool">
         <plugin name="AHT_ShopByBrand_ShowBrandMiniCart" sortOrder="10" type="AHT\ShopByBrand\Plugin\BrandNameInMiniCart\ShowBrandInMiniCart" disabled="false" />
     </type>
+
+	<type name="Magento\Quote\Model\Quote\Item">
+        <plugin name="AHT_ShopByBrand_addBrandtosumary" sortOrder="10" type="AHT\ShopByBrand\Plugin\AddBrandToSummary\AddBrandToSummary" disabled="false" />
+    </type>
 </config>
