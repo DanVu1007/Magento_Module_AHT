@@ -28,11 +28,8 @@ define([
             agreementsAssigner(paymentData);
             var isCustomer = customer.isLoggedIn();
             var quoteId = quote.getQuoteId();
-
-            var url = urlFormatter.build('AHT/quote/save');
-
+            var url = urlFormatter.build('delivery_note/quote/save');
             var deliveryNote = $('[name="delivery_note"]').val();
-
             if (deliveryNote) {
 
                 var payload = {
@@ -40,6 +37,10 @@ define([
                     'delivery_note': deliveryNote,
                     'is_customer': isCustomer
                 };
+                // alert (payload.cartId);
+                // alert (payload.delivery_note);
+                // alert (payload.is_customer);
+
 
                 if (!payload.delivery_note) {
                     return true;
