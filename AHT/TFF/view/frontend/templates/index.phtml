@@ -1,0 +1,20 @@
+<?php
+/** @var \AHT\TFF\Block\Template $block */
+?>
+<div id="knocktest-component" data-bind="scope:'knocktest'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#knocktest-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "knocktest": {
+                        "component": "AHT_TFF/js/knocktest",
+                        "template": "AHT_TFF/knocktest"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>
