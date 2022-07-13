@@ -1,0 +1,222 @@
+& when (@media-common = true) {
+    .module {
+        //
+        //  Css style search form
+        //  ---------------------------------------------
+        .search {
+            position: relative;
+            max-width: 500px;
+            margin-bottom: 60px;
+            &_form {
+                position: relative;
+                z-index: 4;
+                display: flex;
+                height: 38px;
+                border: 1px solid @search_border;
+                border-radius: 40px;
+                overflow: hidden;
+                &_input {
+                    width: 100%;
+                    input {
+                        border: none;
+                        height: 38px;
+                        padding-left: 25px;
+                        &:focus {
+                            box-shadow: none;
+                        }
+                    }
+                }
+                &_button {
+                    button {
+                        background-color: @button_color;
+                        border: none;
+                        height: 38px;
+                        padding-right: 25px;
+                        color: @search_border;
+                        pointer-events: none;
+                    }
+                }
+            }
+            &_result {
+                border: 1px solid @search_border;
+                border-top: unset;
+                padding: 40px 20px;
+                box-sizing: border-box;
+                z-index: 3;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                background-color: @button_color;
+                &_item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 10px 0;
+                    &_img {
+                        width: 100px;
+                        height: 100px;
+                    }
+                    &_info {
+                        width: 50%;
+                        .product_name {
+                            font-size: 18px;
+                            font-weight: 600;
+                        }
+                        .product_sku {
+                            font-size: 16px;
+                            font-weight: 400;
+                            color: @sku_color;
+                        }
+                        .product_price {
+                            color: @price_color;
+                        }
+                    }
+                }
+            }
+            .special {
+                max-height: 400px;
+                overflow: scroll;
+                overflow-x: hidden;
+            }
+        }
+
+        //
+        //  Css style product table
+        //  ---------------------------------------------
+        .order_table {
+            position: sticky;
+            overflow-y: auto;
+            max-height: 700px;
+            max-width: 1240px;
+            overflow-x: auto;
+            min-height: 300px;
+            table {
+                text-align: center;
+                thead {
+                    position: sticky;
+                    top: 0;
+                    z-index: 1;
+                    background-color: @table_color;
+                    color: @button_color;
+                }
+                th {
+                    position: sticky;
+                    top: 0;
+                    z-index: 1;
+                    text-align: center;
+                }
+                td {
+                    vertical-align: middle;
+                }
+                tfoot {
+                    position: sticky;
+                    bottom: 0;
+                    z-index: 1;
+                    background-color: @search_border;
+                }
+                .table_sku {
+                    color: @sku_color;
+                    font-weight: 400;
+                    width: 13%;
+                }
+                .table_product {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .product_img {
+                        img {
+                            width: 200px;
+                            height: 200px;
+                        }
+                    }
+                    .product_detail {
+                        &_name {
+                            font-weight: 600;
+                        }
+                        &_price {
+                            color: @price_color;
+                        }
+                    }
+                    .product_delete {
+                        button {
+                            background-color: @button_color;
+                            border: none;
+                            color: @sku_color;
+                        }
+                    }
+                }
+                .table_qty {
+                    width: 20%;
+                    &_inner {
+                        display: inline-flex;
+                        border: 1px solid @search_border;
+                        border-radius: 32px;
+                        overflow: hidden;
+                        button {
+                            width: 40px;
+                            background-color: @button_color;
+                            border: none;
+                        }
+                        input {
+                            text-align: center;
+                            width: 40px;
+                            border: none;
+                            box-shadow: none;
+                        }
+                    }
+                }
+                .table_price {
+                    width: 13%;
+                }
+            }
+        }
+
+        //
+        //  Css style add to cart button
+        //  ---------------------------------------------
+        .add_to_cart {
+            margin-top: 20px;
+            button {
+                border: 1px solid @search_border;
+                background-color: @table_color;
+                color: @button_color;
+                width: 100px;
+                height: 40px;
+                border-radius: 102px;
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='max') and (@break =@screen__m) {
+    //
+    //  Css style product table
+    //  ---------------------------------------------
+    .module {
+        .order_table {
+            table {
+                .table_product {
+                    .product_img {
+                        display: none;
+                    }
+                }
+                .table_qty {
+                    &_inner {
+                        button {
+                            width: 20px;
+                        }
+                        input {
+                            width: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
