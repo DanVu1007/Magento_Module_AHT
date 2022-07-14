@@ -87,8 +87,8 @@ class Search extends \Magento\Framework\App\Action\Action
                 ->init($product, 'product_base_image')
                 ->getUrl();
         }
-
         if ($search_keyword == null) {
+
             return false;
         }
 

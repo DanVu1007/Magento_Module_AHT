@@ -1,16 +1,13 @@
-<?php
-/** @var \AHT\TFF\Block\Template $block */
-?>
-<div id="knocktest-component" data-bind="scope:'knocktest'">
+<div id="custom-component" data-bind="scope:'customcomponent'">
     <!-- ko template: getTemplate() --><!-- /ko -->
     <script type="text/x-magento-init">
     {
-        "#knocktest-component": {
+        "#custom-component": {
             "Magento_Ui/js/core/app": {
                "components": {
-                    "knocktest": {
-                        "component": "AHT_TFF/js/knocktest",
-                        "template": "AHT_TFF/knocktest"
+                    "customcomponent": {
+                        "component": "AHT_TFF/js/knockout2th",
+                        "template": "AHT_TFF/knockhtml"
                     }
                 }
             }

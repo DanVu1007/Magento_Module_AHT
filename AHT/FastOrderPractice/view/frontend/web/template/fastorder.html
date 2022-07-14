@@ -2,7 +2,12 @@
     <div class="search">
         <div class="search_form">
             <div class="search_form_input">
-                <input type="text" class="search_form_input" placeholder="Search by name or SKU" data-bind="value: search_keyword, valueUpdate: 'afterkeydown', event: {keyup: getKeyWord}, hasFocus: search_focused">
+                <input  type="text" class="search_form_input" 
+                        placeholder="Search by name or SKU" 
+                        data-bind=" value: search_keyword, 
+                                    valueUpdate: 'afterkeydown', 
+                                    event: {keyup: getKeyWord}, 
+                                    hasFocus: search_focused">
             </div>
             <div class="search_form_button">
                 <button>
@@ -11,7 +16,10 @@
             </div>
         </div>
         <div class="search_result" data-bind="visible: search_result().length == 0 && search_focused">Not found</div>
-        <div class="search_result special" data-bind="foreach: search_result, visible: search_result().length && result_appear, event: { mouseover: function(){result_focused(true)}, mouseout: function(){result_focused(false)} }">
+        <div class="search_result special" data-bind="foreach: search_result, 
+                                                        visible: search_result().length && result_appear, 
+                                                        event: { mouseover: function(){result_focused(true)}, 
+                                                        mouseout: function(){result_focused(false)} }">
             <div class="search_result_item">
                 <div class="search_result_item_img">
                     <img data-bind="attr: {src: src}" alt="Product image">
@@ -19,10 +27,14 @@
                 <div class="search_result_item_info">
                     <p data-bind="text: name" class="product_name"></p>
                     <p class="product_sku">SKU#: <span data-bind="text: sku"></span></p>
-                    <p class="product_price"><span data-bind="text: $parent.currency"></span><span data-bind="text: price"></span></p>
+                    <p class="product_price">
+                        <span data-bind="text: $parent.currency"></span>
+                        <span data-bind="text: price"></span>
+                    </p>
                 </div>
                 <div class="search_result_item_checkbox">
-                    <input type="checkbox" data-bind="checked: isCheck, event: {change: $parent.checkToTable}">
+                    <input type="checkbox" data-bind="  checked: isCheck, 
+                                                        event: {change: $parent.checkToTable}">
                 </div>
             </div>
         </div>
