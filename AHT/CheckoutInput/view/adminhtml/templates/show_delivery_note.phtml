@@ -1,0 +1,13 @@
+<?php
+
+/** @var \AHT\CheckoutInput\Block\ShowDeliveryNote $block; */
+$content = ($block->showDeliNote() != '') ? $block->showDeliNote() : 'Khong co yeu cau';
+?>
+
+<div class="admin__page-section-item-title">
+    <span class="title">Note Shiping</span>
+</div>
+<div class="admin__page-section-item-content">
+    <b>content: </b>
+    <span><?= $content ?></span>
+</div>
