@@ -1,0 +1,95 @@
+<div class="module">
+    <div class="search">
+        <div class="search_form">
+            <div class="search_form_input">
+                <input  type="text" class="search_form_input" 
+                        placeholder="Search by name or SKU" 
+                        data-bind=" value: search_keyword, 
+                                    valueUpdate: 'afterkeydown', 
+                                    event: {keyup: getKeyWord}, 
+                                    hasFocus: search_focused">
+            </div>
+            <div class="search_form_button">
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+        <div class="search_result" data-bind="visible: search_result().length == 0 && search_focused">Not found</div>
+        <div class="search_result special" data-bind="foreach: search_result, 
+                                                        visible: search_result().length && result_appear, 
+                                                        event: { mouseover: function(){result_focused(true)}, 
+                                                        mouseout: function(){result_focused(false)} }">
+            <div class="search_result_item">
+                <div class="search_result_item_img">
+                    <img data-bind="attr: {src: src}" alt="Product image">
+                </div>
+                <div class="search_result_item_info">
+                    <p data-bind="text: name" class="product_name"></p>
+                    <p class="product_sku">SKU#: <span data-bind="text: sku"></span></p>
+                    <p class="product_price">
+                        <span data-bind="text: $parent.currency"></span>
+                        <span data-bind="text: price"></span>
+                    </p>
+                </div>
+                <div class="search_result_item_checkbox">
+                    <input type="checkbox" data-bind="  checked: isCheck, 
+                                                        event: {change: $parent.checkToTable}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="order_table">
+        <table>
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>PRODUCT</th>
+                    <th>QTY</th>
+                    <th>SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: product_table_list">
+                <tr>
+                    <td data-bind="text: sku" class="table_sku"></td>
+                    <td class="table_product">
+                        <div class="product_img">
+                            <img data-bind="attr: {src: src}" alt="Product image">
+                        </div>
+                        <div class="product_detail">
+                            <div class="product_detail_name" data-bind="text: name"></div>
+                            <div class="product_detail_price"><span data-bind="text: $parent.currency "></span><span data-bind="text: price"></span></div>
+                        </div>
+                        <div class="product_delete ">
+                            <button data-bind="click: $parent.deleteProduct "><i class="fa-solid fa-trash-can "></i></button>
+                        </div>
+                    </td>
+                    <td class="table_qty">
+                        <div class="table_qty_inner">
+                            <button data-bind=" click: qtyDown ">-</button>
+                            <input type="number " data-bind="value: qty ">
+                            <button data-bind="click: qtyUp ">+</button>
+                        </div>
+                    </td>
+                    <td class="table_price ">
+                        <span data-bind="text: $parent.currency "></span>
+                        <span data-bind="text: total_price "></span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>Filled Lines Number: <span data-bind="text: countLine "></span></th>
+                    <th>Total Qty: <span data-bind="text: countProduct "></span></th>
+                    <th>Sub Total: <span data-bind="text: currency "></span><span data-bind="text: countPrice "></span></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="add_to_cart ">
+        <button data-bind="visible: product_table_list().length> 0, click: addToCart"><i class="fa-solid fa-cart-plus"></i></button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src = "AHT_FastOrderPractice::css/fontawesome.min.css"/>
+    </head>
+    <body>
+      <referenceBlock name="top.links">
+          <block class="Magento\Customer\Block\Account\SortLink" name="order-history-top-link" after="wish-list-link">
+              <arguments>
+                  <argument name="path" xsi:type="string">fastorderpractice</argument>
+                  <argument name="label" xsi:type="string" translate="true">Fast Order</argument>
+              </arguments>
+          </block>
+      </referenceBlock>
+  </body>
+</page>

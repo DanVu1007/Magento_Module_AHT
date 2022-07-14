@@ -1,0 +1,15 @@
+<div class="module">
+    <div class="search">
+        <div><p data-bind="text: search_keyword"></p></div>
+        <div class="search_form">
+            <div class="search_form_input">
+                <input  type="text" class="search_form_input" 
+                        placeholder="Search by name or SKU" 
+                        data-bind=" value: search_keyword, 
+                                    valueUpdate: 'afterkeydown', 
+                                    event: {keyup: getKeyWord}, 
+                                    hasFocus: search_focused">
+            </div>
+        </div>
+    </div>
+</div>

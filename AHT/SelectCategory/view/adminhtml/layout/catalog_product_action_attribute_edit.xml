@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="left">
+            <referenceBlock name="attributes_tabs">
+                <block class="AHT\SelectCategory\Block\Adminhtml\Tab\Categories" name="category_tabs" template="AHT_SelectCategory::index.phtml" cacheable="false"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">Category</argument>
+                    <argument name="block" xsi:type="string">category_tabs</argument>
+                </action>
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

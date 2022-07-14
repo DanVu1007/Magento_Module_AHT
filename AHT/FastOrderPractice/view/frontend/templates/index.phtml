@@ -1,0 +1,22 @@
+<?php
+/** @var \AHT\FastOrderPractice\Block\Template $block */
+?>
+
+<div id="fastorder_template" data-bind="scope: 'fastorder'">
+    <!-- ko template: getTemplate() -->
+    <!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#fastorder_template": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "fastorder": {
+                        "component": "AHT_FastOrderPractice/js/fastorder",
+                        "template": "AHT_FastOrderPractice/fastorder"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+</div>

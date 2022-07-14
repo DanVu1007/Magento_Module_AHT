@@ -1,19 +1,49 @@
 <?php
 namespace AHT\ShopByBrand\Model\ResourceModel\Brand\Grid;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Data\Collection\Db\FetchStrategyInterface as FetchStrategy;
+use Magento\Framework\Data\Collection\EntityFactoryInterface as EntityFactory;
+use Magento\Framework\Event\ManagerInterface as EventManager;
+use Psr\Log\LoggerInterface as Logger;
+
+/**
+ * Order grid collection
+ */
+class Collection extends \Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult
 {
-    protected $_idFieldName = 'brand_id';
-    protected $_eventPrefix = 'aht_shopbybrand_brand_grid_collection';
-    protected $_eventObject = 'brand_grid_collection';
+    /**
+     * Initialize dependencies.
+     *
+     * @param EntityFactory $entityFactory
+     * @param Logger $logger
+     * @param FetchStrategy $fetchStrategy
+     * @param EventManager $eventManager
+     * @param string $mainTable
+     * @param string $resourceModel
+     */
+    public function __construct(
+        EntityFactory $entityFactory,
+        Logger $logger,
+        FetchStrategy $fetchStrategy,
+        EventManager $eventManager,
+        $mainTable = 'brand',
+        $resourceModel = \Magento\Sales\Model\ResourceModel\Order::class
+    ) {
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $mainTable, $resourceModel);
+    }
 
     /**
-     * Define the resource model & the model.
-     *
-     * @return void
+     * @inheritdoc
      */
-    protected function _construct()
+    protected function _initSelect()
     {
-        $this->_init('AHT\ShopByBrand\Model\Brand\Grid', 'AHT\ShopByBrand\Model\ResourceModel\Brand\Grid');
+        parent::_initSelect();
+
+        $tableDescription = $this->getConnection()->describeTable($this->getMainTable());
+        foreach ($tableDescription as $columnInfo) {
+            $this->addFilterToMap($columnInfo['COLUMN_NAME'], 'main_table.' . $columnInfo['COLUMN_NAME']);
+        }
+
+        return $this;
     }
 }
